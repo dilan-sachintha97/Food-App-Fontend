@@ -23,6 +23,7 @@ const SignUp = () => {
       const response = await axios.post("http://localhost:3005/api/v1/user/create-user", formData); // Replace with your actual API endpoint
       console.log("Server Response:", response.data);
 
+      clearAllInput();
       // Handle success or redirect the user
       // Example: history.push("/login");
     } catch (error) {
@@ -30,6 +31,15 @@ const SignUp = () => {
       console.error("Error:", error);
     }
   };
+
+  const clearAllInput = ()=>{
+    setFormData({
+        name: "",
+        email: "",
+        password: "",
+        location: "",
+      });
+  }
 
   return (
     <div className="container text-white">
@@ -67,7 +77,7 @@ const SignUp = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label">Location</label>
+          <label className="form-label">Address</label>
           <input
             type="text"
             className="form-control shadow-none"
